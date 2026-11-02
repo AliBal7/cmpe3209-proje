@@ -1,0 +1,7 @@
+__pycache__/
+*.exe
+*.dll
+*.o
+*.obj
+*.zig-cache/
+zig-cache/
