@@ -1,0 +1,181 @@
+{
+  "student_number": "5001230006",
+  "SID": 1230006,
+  "original": [
+    7,
+    55,
+    68,
+    100,
+    97,
+    95,
+    23,
+    65,
+    1,
+    16,
+    18,
+    99,
+    45,
+    41,
+    86,
+    66,
+    70,
+    6,
+    35,
+    13,
+    74,
+    4,
+    68,
+    96,
+    96,
+    91,
+    66,
+    20,
+    3,
+    29
+  ],
+  "sum": 1553,
+  "outputs": {
+    "bucket": [
+      14,
+      1,
+      7,
+      0,
+      8
+    ],
+    "mean": 51,
+    "below_count": 14,
+    "pass_count": 15
+  },
+  "addresses": {
+    "bucket": "0x00020088",
+    "mean": "0x00020008",
+    "below_count": "0x0002000C",
+    "pass_count": "0x00020004"
+  },
+  "instruction_count": 3878,
+  "kernel": [
+    {
+      "address": 66260,
+      "hex": "e78000d3",
+      "mnemonic": "jalr",
+      "operands": "ra, ra, -0x2d0"
+    },
+    {
+      "address": 65536,
+      "hex": "130101ff",
+      "mnemonic": "addi",
+      "operands": "sp, sp, -0x10"
+    },
+    {
+      "address": 65540,
+      "hex": "23261100",
+      "mnemonic": "sw",
+      "operands": "ra, 0xc(sp)"
+    },
+    {
+      "address": 65544,
+      "hex": "23248100",
+      "mnemonic": "sw",
+      "operands": "s0, 8(sp)"
+    },
+    {
+      "address": 65548,
+      "hex": "13040101",
+      "mnemonic": "addi",
+      "operands": "s0, sp, 0x10"
+    },
+    {
+      "address": 65552,
+      "hex": "232aa4fe",
+      "mnemonic": "sw",
+      "operands": "a0, -0xc(s0)"
+    },
+    {
+      "address": 65556,
+      "hex": "2328b4fe",
+      "mnemonic": "sw",
+      "operands": "a1, -0x10(s0)"
+    },
+    {
+      "address": 65560,
+      "hex": "032544ff",
+      "mnemonic": "lw",
+      "operands": "a0, -0xc(s0)"
+    },
+    {
+      "address": 65564,
+      "hex": "832504ff",
+      "mnemonic": "lw",
+      "operands": "a1, -0x10(s0)"
+    },
+    {
+      "address": 65568,
+      "hex": "6344b500",
+      "mnemonic": "blt",
+      "operands": "a0, a1, 8"
+    },
+    {
+      "address": 65576,
+      "hex": "6f004000",
+      "mnemonic": "j",
+      "operands": "4"
+    },
+    {
+      "address": 65580,
+      "hex": "032544ff",
+      "mnemonic": "lw",
+      "operands": "a0, -0xc(s0)"
+    },
+    {
+      "address": 65584,
+      "hex": "13650510",
+      "mnemonic": "ori",
+      "operands": "a0, a0, 0x100"
+    },
+    {
+      "address": 65588,
+      "hex": "232aa4fe",
+      "mnemonic": "sw",
+      "operands": "a0, -0xc(s0)"
+    },
+    {
+      "address": 65592,
+      "hex": "6f004000",
+      "mnemonic": "j",
+      "operands": "4"
+    },
+    {
+      "address": 65596,
+      "hex": "032544ff",
+      "mnemonic": "lw",
+      "operands": "a0, -0xc(s0)"
+    },
+    {
+      "address": 65600,
+      "hex": "8320c100",
+      "mnemonic": "lw",
+      "operands": "ra, 0xc(sp)"
+    },
+    {
+      "address": 65604,
+      "hex": "03248100",
+      "mnemonic": "lw",
+      "operands": "s0, 8(sp)"
+    },
+    {
+      "address": 65608,
+      "hex": "13010101",
+      "mnemonic": "addi",
+      "operands": "sp, sp, 0x10"
+    },
+    {
+      "address": 65612,
+      "hex": "67800000",
+      "mnemonic": "ret",
+      "operands": ""
+    }
+  ],
+  "kernel_first": "0x000102D4",
+  "kernel_last": "0x0001004C",
+  "status": "PASS: RV32IM memory equals independent Python reference"
+}
