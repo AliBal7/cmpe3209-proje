@@ -1,0 +1,28 @@
+CMPE3209 - M1 | Ali Bal | 5001230006
+
+Basılı teslim:
+pdf/Ali_Bal_CMPE3209_M1_Tutanak.pdf
+Bu, özgün 15 sayfalık tutanağın doldurulmuş hali ve sonuna eklenmiş 3 ek sayfadır.
+M1 için basılacak sayfalar: 1-3,14,16-18 (toplam 7 sayfa).
+A4 kağıda, sayfaya sığdır seçeneğiyle yazdırılabilir.
+pdf/Ali_Bal_5001230006_M1_YAZDIR.pdf aynı 7 sayfanın kolay baskı kopyasıdır.
+
+Dijital teslim:
+Bu klasörün tamamı; gizli .git klasörü Git geçmişini içerir.
+Git deposu adresi: https://github.com/AliBal7/cmpe3209-proje
+İlk M1 etiketi: M1
+Son teslim sürümü etiketi: M1-teslim
+
+Kaynak kod: main.c
+Resmî tam tutanak: pdf/Ali_Bal_CMPE3209_M1_Tutanak.pdf
+İki sayfalık öneri: pdf/Ali_Bal_CMPE3209_M1_Oneri.pdf
+Gerçek ekran görüntüsü: evidence/rv32im_simulator_screenshot.jpg
+Simülasyon doğrulaması: evidence/verification.json
+
+Hazır ELF dosyasını tekrar çalıştırma:
+python -m pip install -r requirements-verify.txt
+python tools/verify.py
+Grafik arayüz için: python tools/sim_gui.py
+
+Sonraki aşamalar bu M1 teslimine dahil değildir.
+İmza, tarih ve öğretim üyesi onayı ilgili kişilerce doldurulur.

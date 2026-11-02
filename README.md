@@ -39,7 +39,20 @@ Doğrulama: `python tools/verify.py`.
 Kodun denetlenmesi ve derleme hatalarının giderilmesinde ChatGPT/Codex desteği kullanıldı.
 Programın sonuçları RV32IM belleği ve bağımsız hesapla karşılaştırıldı.
 
-M2 ve final aşamaları tamamlanmış gibi gösterilmemiştir. Program çıktısının
-kanıtı JSON bellek dökümüdür; üretilen görsel döküm bir GUI simülatör ekran görüntüsü değildir.
+M2 ve final aşamaları bu teslimin kapsamında değildir.
+Gerçek simülatör ekran görüntüsü: evidence/rv32im_simulator_screenshot.jpg.
+GUI, tools/sim_gui.py ile ELF dosyasını Unicorn üzerinde çalıştırıp gerçek bellek değerlerini gösterir.
+JSON bellek kanıtı: evidence/verification.json.
 GitHub deposu: https://github.com/AliBal7/cmpe3209-proje (özel).
-Yerel main dalında atomik commit'ler ve M1 etiketi bulunur.
+İlk sürüm etiketi M1; son teslim paketi etiketi M1-teslim.
+
+## Teslim dosyaları
+
+- pdf/Ali_Bal_5001230006_M1_YAZDIR.pdf: basılacak 7 sayfa; M1 formu, iki sayfalık öneri, ekran görüntüsü/kernel ve beyan.
+- pdf/Ali_Bal_CMPE3209_M1_Tutanak.pdf: gönderilen resmî özgün formun M1 alanları doldurulmuş sürümü (15 özgün sayfa + 3 ek sayfa). Sonraki aşamalarda aynı belge güncellenir. M1 için basılacak sayfalar: 1-3,14,16-18.
+- pdf/Ali_Bal_CMPE3209_M1_Oneri.pdf: iki sayfalık program önerisi (Ek-1).
+- pdf/Ali_Bal_CMPE3209_M1_Ek2.pdf: gerçek simülatör ekran görüntüsü ve kernel listesi.
+- main.c: 39 satırlık kaynak kodu; .git: tüm commit geçmişi ve etiketler.
+
+Postayla gönderilecek ZIP, gizli .git klasörünü de içerir. GitHub'daki Download ZIP bu geçmişi içermez.
+ZIP dosyasını açtıktan sonra `git log --oneline` ve `git tag` ile geçmiş ve etiketler incelenebilir.
