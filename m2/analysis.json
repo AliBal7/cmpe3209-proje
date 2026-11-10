@@ -1,0 +1,1286 @@
+{
+  "compiler": "Clang 18.1.6 (Zig 0.13.0)",
+  "source_sha256": "23a75c927e750cd29783621a45041a878c899627522c7baeaa93853e79dca0e3",
+  "outputs": {
+    "bucket": [
+      14,
+      1,
+      7,
+      0,
+      8
+    ],
+    "mean": 51,
+    "below_count": 14,
+    "pass_count": 15
+  },
+  "all_grades_match": true,
+  "encoding_match_count": 10,
+  "encodings": [
+    {
+      "number": 1,
+      "address": "0x00010060",
+      "assembly": "lui a0, 0x12c",
+      "op": "lui",
+      "arguments": {
+        "rd": 10,
+        "imm": 300
+      },
+      "format": "U",
+      "fields": [
+        {
+          "name": "imm[31:12]",
+          "bits": "31:12",
+          "binary": "00000000000100101100"
+        },
+        {
+          "name": "rd",
+          "bits": "11:7",
+          "binary": "01010"
+        },
+        {
+          "name": "opcode",
+          "bits": "6:0",
+          "binary": "0110111"
+        }
+      ],
+      "binary": "00000000000100101100010100110111",
+      "word": "0x0012C537",
+      "bytes": "37 c5 12 00",
+      "purpose": "SID üst 20 bit",
+      "verified": true
+    },
+    {
+      "number": 2,
+      "address": "0x00010064",
+      "assembly": "addi a0, a0, 0x4b6",
+      "op": "addi",
+      "arguments": {
+        "rd": 10,
+        "rs1": 10,
+        "imm": 1206
+      },
+      "format": "I",
+      "fields": [
+        {
+          "name": "imm[11:0]",
+          "bits": "31:20",
+          "binary": "010010110110"
+        },
+        {
+          "name": "rs1",
+          "bits": "19:15",
+          "binary": "01010"
+        },
+        {
+          "name": "funct3",
+          "bits": "14:12",
+          "binary": "000"
+        },
+        {
+          "name": "rd",
+          "bits": "11:7",
+          "binary": "01010"
+        },
+        {
+          "name": "opcode",
+          "bits": "6:0",
+          "binary": "0010011"
+        }
+      ],
+      "binary": "01001011011001010000010100010011",
+      "word": "0x4B650513",
+      "bytes": "13 05 65 4b",
+      "purpose": "SID alt 12 bit",
+      "verified": true
+    },
+    {
+      "number": 3,
+      "address": "0x000100A4",
+      "assembly": "mul a0, a0, a1",
+      "op": "mul",
+      "arguments": {
+        "rd": 10,
+        "rs1": 10,
+        "rs2": 11
+      },
+      "format": "R",
+      "fields": [
+        {
+          "name": "funct7",
+          "bits": "31:25",
+          "binary": "0000001"
+        },
+        {
+          "name": "rs2",
+          "bits": "24:20",
+          "binary": "01011"
+        },
+        {
+          "name": "rs1",
+          "bits": "19:15",
+          "binary": "01010"
+        },
+        {
+          "name": "funct3",
+          "bits": "14:12",
+          "binary": "000"
+        },
+        {
+          "name": "rd",
+          "bits": "11:7",
+          "binary": "01010"
+        },
+        {
+          "name": "opcode",
+          "bits": "6:0",
+          "binary": "0110011"
+        }
+      ],
+      "binary": "00000010101101010000010100110011",
+      "word": "0x02B50533",
+      "bytes": "33 05 b5 02",
+      "purpose": "LCG çarpması",
+      "verified": true
+    },
+    {
+      "number": 4,
+      "address": "0x00010018",
+      "assembly": "lw a0, -0xc(s0)",
+      "op": "lw",
+      "arguments": {
+        "rd": 10,
+        "rs1": 8,
+        "imm": -12
+      },
+      "format": "I",
+      "fields": [
+        {
+          "name": "imm[11:0]",
+          "bits": "31:20",
+          "binary": "111111110100"
+        },
+        {
+          "name": "rs1",
+          "bits": "19:15",
+          "binary": "01000"
+        },
+        {
+          "name": "funct3",
+          "bits": "14:12",
+          "binary": "010"
+        },
+        {
+          "name": "rd",
+          "bits": "11:7",
+          "binary": "01010"
+        },
+        {
+          "name": "opcode",
+          "bits": "6:0",
+          "binary": "0000011"
+        }
+      ],
+      "binary": "11111111010001000010010100000011",
+      "word": "0xFF442503",
+      "bytes": "03 25 44 ff",
+      "purpose": "Notu stack üzerinden yükle",
+      "verified": true
+    },
+    {
+      "number": 5,
+      "address": "0x00010034",
+      "assembly": "sw a0, -0xc(s0)",
+      "op": "sw",
+      "arguments": {
+        "rs1": 8,
+        "rs2": 10,
+        "imm": -12
+      },
+      "format": "S",
+      "fields": [
+        {
+          "name": "imm[11:5]",
+          "bits": "31:25",
+          "binary": "1111111"
+        },
+        {
+          "name": "rs2",
+          "bits": "24:20",
+          "binary": "01010"
+        },
+        {
+          "name": "rs1",
+          "bits": "19:15",
+          "binary": "01000"
+        },
+        {
+          "name": "funct3",
+          "bits": "14:12",
+          "binary": "010"
+        },
+        {
+          "name": "imm[4:0]",
+          "bits": "11:7",
+          "binary": "10100"
+        },
+        {
+          "name": "opcode",
+          "bits": "6:0",
+          "binary": "0100011"
+        }
+      ],
+      "binary": "11111110101001000010101000100011",
+      "word": "0xFEA42A23",
+      "bytes": "23 2a a4 fe",
+      "purpose": "İşaretli notu stack’e yaz",
+      "verified": true
+    },
+    {
+      "number": 6,
+      "address": "0x00010020",
+      "assembly": "blt a0, a1, 8",
+      "op": "blt",
+      "arguments": {
+        "rs1": 10,
+        "rs2": 11,
+        "imm": 8
+      },
+      "format": "B",
+      "fields": [
+        {
+          "name": "imm[12]",
+          "bits": "31",
+          "binary": "0"
+        },
+        {
+          "name": "imm[10:5]",
+          "bits": "30:25",
+          "binary": "000000"
+        },
+        {
+          "name": "rs2",
+          "bits": "24:20",
+          "binary": "01011"
+        },
+        {
+          "name": "rs1",
+          "bits": "19:15",
+          "binary": "01010"
+        },
+        {
+          "name": "funct3",
+          "bits": "14:12",
+          "binary": "100"
+        },
+        {
+          "name": "imm[4:1]",
+          "bits": "11:8",
+          "binary": "0100"
+        },
+        {
+          "name": "imm[11]",
+          "bits": "7",
+          "binary": "0"
+        },
+        {
+          "name": "opcode",
+          "bits": "6:0",
+          "binary": "1100011"
+        }
+      ],
+      "binary": "00000000101101010100010001100011",
+      "word": "0x00B54463",
+      "bytes": "63 44 b5 00",
+      "purpose": "Ortalamanın altı: branch",
+      "verified": true
+    },
+    {
+      "number": 7,
+      "address": "0x00010028",
+      "assembly": "j 4",
+      "op": "jal",
+      "arguments": {
+        "rd": 0,
+        "imm": 4
+      },
+      "format": "J",
+      "fields": [
+        {
+          "name": "imm[20]",
+          "bits": "31",
+          "binary": "0"
+        },
+        {
+          "name": "imm[10:1]",
+          "bits": "30:21",
+          "binary": "0000000010"
+        },
+        {
+          "name": "imm[11]",
+          "bits": "20",
+          "binary": "0"
+        },
+        {
+          "name": "imm[19:12]",
+          "bits": "19:12",
+          "binary": "00000000"
+        },
+        {
+          "name": "rd",
+          "bits": "11:7",
+          "binary": "00000"
+        },
+        {
+          "name": "opcode",
+          "bits": "6:0",
+          "binary": "1101111"
+        }
+      ],
+      "binary": "00000000010000000000000001101111",
+      "word": "0x0040006F",
+      "bytes": "6f 00 40 00",
+      "purpose": "j sözde komutu: jal x0,+4",
+      "verified": true
+    },
+    {
+      "number": 8,
+      "address": "0x000102D0",
+      "assembly": "auipc ra, 0",
+      "op": "auipc",
+      "arguments": {
+        "rd": 1,
+        "imm": 0
+      },
+      "format": "U",
+      "fields": [
+        {
+          "name": "imm[31:12]",
+          "bits": "31:12",
+          "binary": "00000000000000000000"
+        },
+        {
+          "name": "rd",
+          "bits": "11:7",
+          "binary": "00001"
+        },
+        {
+          "name": "opcode",
+          "bits": "6:0",
+          "binary": "0010111"
+        }
+      ],
+      "binary": "00000000000000000000000010010111",
+      "word": "0x00000097",
+      "bytes": "97 00 00 00",
+      "purpose": "call çiftinin üst kısmı",
+      "verified": true
+    },
+    {
+      "number": 9,
+      "address": "0x000102D4",
+      "assembly": "jalr ra, ra, -0x2d0",
+      "op": "jalr",
+      "arguments": {
+        "rd": 1,
+        "rs1": 1,
+        "imm": -720
+      },
+      "format": "I",
+      "fields": [
+        {
+          "name": "imm[11:0]",
+          "bits": "31:20",
+          "binary": "110100110000"
+        },
+        {
+          "name": "rs1",
+          "bits": "19:15",
+          "binary": "00001"
+        },
+        {
+          "name": "funct3",
+          "bits": "14:12",
+          "binary": "000"
+        },
+        {
+          "name": "rd",
+          "bits": "11:7",
+          "binary": "00001"
+        },
+        {
+          "name": "opcode",
+          "bits": "6:0",
+          "binary": "1100111"
+        }
+      ],
+      "binary": "11010011000000001000000011100111",
+      "word": "0xD30080E7",
+      "bytes": "e7 80 00 d3",
+      "purpose": "mark_below çağrısı",
+      "verified": true
+    },
+    {
+      "number": 10,
+      "address": "0x00010030",
+      "assembly": "ori a0, a0, 0x100",
+      "op": "ori",
+      "arguments": {
+        "rd": 10,
+        "rs1": 10,
+        "imm": 256
+      },
+      "format": "I",
+      "fields": [
+        {
+          "name": "imm[11:0]",
+          "bits": "31:20",
+          "binary": "000100000000"
+        },
+        {
+          "name": "rs1",
+          "bits": "19:15",
+          "binary": "01010"
+        },
+        {
+          "name": "funct3",
+          "bits": "14:12",
+          "binary": "110"
+        },
+        {
+          "name": "rd",
+          "bits": "11:7",
+          "binary": "01010"
+        },
+        {
+          "name": "opcode",
+          "bits": "6:0",
+          "binary": "0010011"
+        }
+      ],
+      "binary": "00010000000001010110010100010011",
+      "word": "0x10056513",
+      "bytes": "13 65 05 10",
+      "purpose": "8. biti set et",
+      "verified": true
+    }
+  ],
+  "mapping": [
+    {
+      "c_line": 1,
+      "source": "/* Ali Bal, 5001230006, G2 */",
+      "asm_lines": "",
+      "addresses": [],
+      "note": "Bağımsız yürütülebilir instruction yok (bildirim/etiket/yorum/parantez)."
+    },
+    {
+      "c_line": 2,
+      "source": "const int SID = 1230006;",
+      "asm_lines": "",
+      "addresses": [],
+      "note": "SID: .rodata; ayrıca C16 başlangıcı için lui/addi ile sabit katlanır."
+    },
+    {
+      "c_line": 3,
+      "source": "enum { N = 30 };",
+      "asm_lines": "",
+      "addresses": [],
+      "note": "N=30 derleme zamanı sabiti; döngü limitlerine gömülür."
+    },
+    {
+      "c_line": 4,
+      "source": "int grades[N];",
+      "asm_lines": "",
+      "addresses": [],
+      "note": "Global diziler/sonuçlar .bss içindedir; başlangıç sıfırdır."
+    },
+    {
+      "c_line": 5,
+      "source": "int bucket[5], mean, below_count, pass_count;",
+      "asm_lines": "",
+      "addresses": [],
+      "note": "Global diziler/sonuçlar .bss içindedir; başlangıç sıfırdır."
+    },
+    {
+      "c_line": 6,
+      "source": "",
+      "asm_lines": "",
+      "addresses": [],
+      "note": "Bağımsız yürütülebilir instruction yok (bildirim/etiket/yorum/parantez)."
+    },
+    {
+      "c_line": 7,
+      "source": "int mark_below(int value, int average)",
+      "asm_lines": "",
+      "addresses": [],
+      "note": "Bağımsız yürütülebilir instruction yok (bildirim/etiket/yorum/parantez)."
+    },
+    {
+      "c_line": 8,
+      "source": "{",
+      "asm_lines": "15,17-18,21,23-24",
+      "addresses": [
+        "0x00010000",
+        "0x00010004",
+        "0x00010008",
+        "0x0001000C",
+        "0x00010010",
+        "0x00010014"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 9,
+      "source": "    if (value < average)",
+      "asm_lines": "27,29,32-33",
+      "addresses": [
+        "0x00010018",
+        "0x0001001C",
+        "0x00010020",
+        "0x00010024",
+        "0x00010028"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 10,
+      "source": "        value = value | 0x100;",
+      "asm_lines": "37,39,41,43",
+      "addresses": [
+        "0x0001002C",
+        "0x00010030",
+        "0x00010034",
+        "0x00010038"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 11,
+      "source": "    return value;",
+      "asm_lines": "47-49,51",
+      "addresses": [
+        "0x0001003C",
+        "0x00010040",
+        "0x00010044",
+        "0x00010048",
+        "0x0001004C"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 12,
+      "source": "}",
+      "asm_lines": "",
+      "addresses": [],
+      "note": "Bağımsız yürütülebilir instruction yok (bildirim/etiket/yorum/parantez)."
+    },
+    {
+      "c_line": 13,
+      "source": "",
+      "asm_lines": "",
+      "addresses": [],
+      "note": "Bağımsız yürütülebilir instruction yok (bildirim/etiket/yorum/parantez)."
+    },
+    {
+      "c_line": 14,
+      "source": "int main(void)",
+      "asm_lines": "",
+      "addresses": [],
+      "note": "Bağımsız yürütülebilir instruction yok (bildirim/etiket/yorum/parantez)."
+    },
+    {
+      "c_line": 15,
+      "source": "{",
+      "asm_lines": "66,68-69,72,74-75",
+      "addresses": [
+        "0x00010050",
+        "0x00010054",
+        "0x00010058",
+        "0x0001005C",
+        "0x00010060",
+        "0x00010064"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 16,
+      "source": "    unsigned int x = (unsigned int)SID;",
+      "asm_lines": "78-79",
+      "addresses": [
+        "0x00010068",
+        "0x0001006C"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 17,
+      "source": "    int i, sum = 0, pass = 50 + SID % 10;",
+      "asm_lines": "81-82,84",
+      "addresses": [
+        "0x00010070",
+        "0x00010074",
+        "0x00010078"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 18,
+      "source": "    for (i = 0; i < N; i++) {",
+      "asm_lines": "87,89,93-94,97-98,138-140,142",
+      "addresses": [
+        "0x0001007C",
+        "0x00010080",
+        "0x00010084",
+        "0x00010088",
+        "0x0001008C",
+        "0x00010090",
+        "0x00010094",
+        "0x000100F4",
+        "0x000100F8",
+        "0x000100FC",
+        "0x00010100"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 19,
+      "source": "        x = 1664525u * x + 1013904223u;",
+      "asm_lines": "102-104,106-108,110,112",
+      "addresses": [
+        "0x00010098",
+        "0x0001009C",
+        "0x000100A0",
+        "0x000100A4",
+        "0x000100A8",
+        "0x000100AC",
+        "0x000100B0",
+        "0x000100B4"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 20,
+      "source": "        grades[i] = (int)((x >> 16) % 101u);",
+      "asm_lines": "114,116-118,120-123,125,127-130,132",
+      "addresses": [
+        "0x000100B8",
+        "0x000100BC",
+        "0x000100C0",
+        "0x000100C4",
+        "0x000100C8",
+        "0x000100CC",
+        "0x000100D0",
+        "0x000100D4",
+        "0x000100D8",
+        "0x000100DC",
+        "0x000100E0",
+        "0x000100E4",
+        "0x000100E8",
+        "0x000100EC"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 21,
+      "source": "    }",
+      "asm_lines": "134",
+      "addresses": [
+        "0x000100F0"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 22,
+      "source": "    for (i = 0; i < N; i++) {",
+      "asm_lines": "149,151,155-156,159-160,297-299,301",
+      "addresses": [
+        "0x00010108",
+        "0x0001010C",
+        "0x00010110",
+        "0x00010114",
+        "0x00010118",
+        "0x0001011C",
+        "0x00010120",
+        "0x0001024C",
+        "0x00010250",
+        "0x00010254",
+        "0x00010258"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 23,
+      "source": "        int v = grades[i];",
+      "asm_lines": "164,166-170,172",
+      "addresses": [
+        "0x00010124",
+        "0x00010128",
+        "0x0001012C",
+        "0x00010130",
+        "0x00010134",
+        "0x00010138",
+        "0x0001013C"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 24,
+      "source": "        sum = sum + v;",
+      "asm_lines": "174,176,178,180",
+      "addresses": [
+        "0x00010140",
+        "0x00010144",
+        "0x00010148",
+        "0x0001014C"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 25,
+      "source": "        if (v < 50) bucket[0]++;",
+      "asm_lines": "183-184,187-188,192-195,197",
+      "addresses": [
+        "0x00010150",
+        "0x00010154",
+        "0x00010158",
+        "0x0001015C",
+        "0x00010160",
+        "0x00010164",
+        "0x00010168",
+        "0x0001016C",
+        "0x00010170",
+        "0x00010174"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 26,
+      "source": "        else if (v < 65) bucket[1]++;",
+      "asm_lines": "201-202,205-206,210-214,216",
+      "addresses": [
+        "0x00010178",
+        "0x0001017C",
+        "0x00010180",
+        "0x00010184",
+        "0x00010188",
+        "0x0001018C",
+        "0x00010190",
+        "0x00010194",
+        "0x00010198",
+        "0x0001019C",
+        "0x000101A0"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 27,
+      "source": "        else if (v < 75) bucket[2]++;",
+      "asm_lines": "220-221,224-225,229-233,235",
+      "addresses": [
+        "0x000101A4",
+        "0x000101A8",
+        "0x000101AC",
+        "0x000101B0",
+        "0x000101B4",
+        "0x000101B8",
+        "0x000101BC",
+        "0x000101C0",
+        "0x000101C4",
+        "0x000101C8",
+        "0x000101CC"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 28,
+      "source": "        else if (v < 85) bucket[3]++;",
+      "asm_lines": "239-240,243-244,248-252,254",
+      "addresses": [
+        "0x000101D0",
+        "0x000101D4",
+        "0x000101D8",
+        "0x000101DC",
+        "0x000101E0",
+        "0x000101E4",
+        "0x000101E8",
+        "0x000101EC",
+        "0x000101F0",
+        "0x000101F4",
+        "0x000101F8"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 29,
+      "source": "        else bucket[4]++;",
+      "asm_lines": "257-262",
+      "addresses": [
+        "0x000101FC",
+        "0x00010200",
+        "0x00010204",
+        "0x00010208",
+        "0x0001020C",
+        "0x00010210"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 30,
+      "source": "        if (v >= pass) pass_count++;",
+      "asm_lines": "274,276,279-280,284-287,289",
+      "addresses": [
+        "0x00010220",
+        "0x00010224",
+        "0x00010228",
+        "0x0001022C",
+        "0x00010230",
+        "0x00010234",
+        "0x00010238",
+        "0x0001023C",
+        "0x00010240",
+        "0x00010244"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 31,
+      "source": "    }",
+      "asm_lines": "293",
+      "addresses": [
+        "0x00010248"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 32,
+      "source": "    mean = sum / N;",
+      "asm_lines": "305-307,309-313,315-317",
+      "addresses": [
+        "0x0001025C",
+        "0x00010260",
+        "0x00010264",
+        "0x00010268",
+        "0x0001026C",
+        "0x00010270",
+        "0x00010274",
+        "0x00010278",
+        "0x0001027C",
+        "0x00010280",
+        "0x00010284"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 33,
+      "source": "    for (i = 0; i < N; i++) {",
+      "asm_lines": "320,322,326-327,330-331,390-392,394",
+      "addresses": [
+        "0x00010288",
+        "0x0001028C",
+        "0x00010290",
+        "0x00010294",
+        "0x00010298",
+        "0x0001029C",
+        "0x000102A0",
+        "0x00010328",
+        "0x0001032C",
+        "0x00010330",
+        "0x00010334"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 34,
+      "source": "        int v = grades[i];",
+      "asm_lines": "335,337-342,344",
+      "addresses": [
+        "0x000102A4",
+        "0x000102A8",
+        "0x000102AC",
+        "0x000102B0",
+        "0x000102B4",
+        "0x000102B8",
+        "0x000102BC",
+        "0x000102C0"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 35,
+      "source": "        grades[i] = mark_below(v, mean);",
+      "asm_lines": "346,348-349,351-353,355,357-358,360",
+      "addresses": [
+        "0x000102C4",
+        "0x000102C8",
+        "0x000102CC",
+        "0x000102D0",
+        "0x000102D4",
+        "0x000102D8",
+        "0x000102DC",
+        "0x000102E0",
+        "0x000102E4",
+        "0x000102E8",
+        "0x000102EC"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 36,
+      "source": "        if (grades[i] & 0x100) below_count++;",
+      "asm_lines": "363,365-366,368-369,372-373,377-380,382",
+      "addresses": [
+        "0x000102F0",
+        "0x000102F4",
+        "0x000102F8",
+        "0x000102FC",
+        "0x00010300",
+        "0x00010304",
+        "0x00010308",
+        "0x0001030C",
+        "0x00010310",
+        "0x00010314",
+        "0x00010318",
+        "0x0001031C",
+        "0x00010320"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 37,
+      "source": "    }",
+      "asm_lines": "386",
+      "addresses": [
+        "0x00010324"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 38,
+      "source": "    return 0;",
+      "asm_lines": "402",
+      "addresses": [
+        "0x00010344",
+        "0x00010348"
+      ],
+      "note": ""
+    },
+    {
+      "c_line": 39,
+      "source": "}",
+      "asm_lines": "",
+      "addresses": [],
+      "note": "Bağımsız yürütülebilir instruction yok (bildirim/etiket/yorum/parantez)."
+    }
+  ],
+  "sections": {
+    "O0": [
+      {
+        "name": ".text",
+        "address": 65536,
+        "bytes": 844,
+        "type": "SHT_PROGBITS"
+      },
+      {
+        "name": ".rodata",
+        "address": 131072,
+        "bytes": 4,
+        "type": "SHT_PROGBITS"
+      },
+      {
+        "name": ".bss",
+        "address": 131076,
+        "bytes": 152,
+        "type": "SHT_NOBITS"
+      }
+    ],
+    "O1": [
+      {
+        "name": ".text",
+        "address": 65536,
+        "bytes": 436,
+        "type": "SHT_PROGBITS"
+      },
+      {
+        "name": ".bss",
+        "address": 131072,
+        "bytes": 152,
+        "type": "SHT_NOBITS"
+      }
+    ]
+  },
+  "kernel": {
+    "O0": [
+      {
+        "address": 66260,
+        "word": 3540025575,
+        "bytes": "e7 80 00 d3",
+        "mnemonic": "jalr",
+        "operands": "ra, ra, -0x2d0",
+        "c_line": 35
+      },
+      {
+        "address": 65536,
+        "word": 4278255891,
+        "bytes": "13 01 01 ff",
+        "mnemonic": "addi",
+        "operands": "sp, sp, -0x10",
+        "c_line": 8
+      },
+      {
+        "address": 65540,
+        "word": 1123875,
+        "bytes": "23 26 11 00",
+        "mnemonic": "sw",
+        "operands": "ra, 0xc(sp)",
+        "c_line": 8
+      },
+      {
+        "address": 65544,
+        "word": 8463395,
+        "bytes": "23 24 81 00",
+        "mnemonic": "sw",
+        "operands": "s0, 8(sp)",
+        "c_line": 8
+      },
+      {
+        "address": 65548,
+        "word": 16843795,
+        "bytes": "13 04 01 01",
+        "mnemonic": "addi",
+        "operands": "s0, sp, 0x10",
+        "c_line": 8
+      },
+      {
+        "address": 65552,
+        "word": 4272171555,
+        "bytes": "23 2a a4 fe",
+        "mnemonic": "sw",
+        "operands": "a0, -0xc(s0)",
+        "c_line": 8
+      },
+      {
+        "address": 65556,
+        "word": 4273219619,
+        "bytes": "23 28 b4 fe",
+        "mnemonic": "sw",
+        "operands": "a1, -0x10(s0)",
+        "c_line": 8
+      },
+      {
+        "address": 65560,
+        "word": 4282656003,
+        "bytes": "03 25 44 ff",
+        "mnemonic": "lw",
+        "operands": "a0, -0xc(s0)",
+        "c_line": 9
+      },
+      {
+        "address": 65564,
+        "word": 4278461827,
+        "bytes": "83 25 04 ff",
+        "mnemonic": "lw",
+        "operands": "a1, -0x10(s0)",
+        "c_line": 9
+      },
+      {
+        "address": 65568,
+        "word": 11879523,
+        "bytes": "63 44 b5 00",
+        "mnemonic": "blt",
+        "operands": "a0, a1, 8",
+        "c_line": 9
+      },
+      {
+        "address": 65576,
+        "word": 4194415,
+        "bytes": "6f 00 40 00",
+        "mnemonic": "j",
+        "operands": "4",
+        "c_line": 9
+      },
+      {
+        "address": 65580,
+        "word": 4282656003,
+        "bytes": "03 25 44 ff",
+        "mnemonic": "lw",
+        "operands": "a0, -0xc(s0)",
+        "c_line": 10
+      },
+      {
+        "address": 65584,
+        "word": 268789011,
+        "bytes": "13 65 05 10",
+        "mnemonic": "ori",
+        "operands": "a0, a0, 0x100",
+        "c_line": 10
+      },
+      {
+        "address": 65588,
+        "word": 4272171555,
+        "bytes": "23 2a a4 fe",
+        "mnemonic": "sw",
+        "operands": "a0, -0xc(s0)",
+        "c_line": 10
+      },
+      {
+        "address": 65592,
+        "word": 4194415,
+        "bytes": "6f 00 40 00",
+        "mnemonic": "j",
+        "operands": "4",
+        "c_line": 10
+      },
+      {
+        "address": 65596,
+        "word": 4282656003,
+        "bytes": "03 25 44 ff",
+        "mnemonic": "lw",
+        "operands": "a0, -0xc(s0)",
+        "c_line": 11
+      },
+      {
+        "address": 65600,
+        "word": 12656771,
+        "bytes": "83 20 c1 00",
+        "mnemonic": "lw",
+        "operands": "ra, 0xc(sp)",
+        "c_line": 11
+      },
+      {
+        "address": 65604,
+        "word": 8463363,
+        "bytes": "03 24 81 00",
+        "mnemonic": "lw",
+        "operands": "s0, 8(sp)",
+        "c_line": 11
+      },
+      {
+        "address": 65608,
+        "word": 16843027,
+        "bytes": "13 01 01 01",
+        "mnemonic": "addi",
+        "operands": "sp, sp, 0x10",
+        "c_line": 11
+      },
+      {
+        "address": 65612,
+        "word": 32871,
+        "bytes": "67 80 00 00",
+        "mnemonic": "ret",
+        "operands": "",
+        "c_line": 11
+      }
+    ],
+    "O1": [
+      {
+        "address": 65912,
+        "word": 10987571,
+        "bytes": "33 a8 a7 00",
+        "mnemonic": "slt",
+        "operands": "a6, a5, a0",
+        "c_line": 9
+      },
+      {
+        "address": 65916,
+        "word": 8919059,
+        "bytes": "13 18 88 00",
+        "mnemonic": "slli",
+        "operands": "a6, a6, 8",
+        "c_line": 9
+      },
+      {
+        "address": 65920,
+        "word": 17295283,
+        "bytes": "b3 e7 07 01",
+        "mnemonic": "or",
+        "operands": "a5, a5, a6",
+        "c_line": 9
+      }
+    ],
+    "O0_stats": {
+      "instructions": 20,
+      "loads": 6,
+      "stores": 5,
+      "registers": [
+        "a0",
+        "a1",
+        "ra",
+        "s0",
+        "sp"
+      ],
+      "register_count": 5
+    },
+    "O1_stats": {
+      "instructions": 3,
+      "loads": 0,
+      "stores": 0,
+      "registers": [
+        "a0",
+        "a5",
+        "a6"
+      ],
+      "register_count": 3
+    },
+    "definition": "C7-12: input-ready -> result-ready mark_below operation for i=0 (7<51). O0 uses approved 20-instruction M1 window; O1 inlines it into main (3 instructions). AUIPC setup before M1 window is excluded; including it gives O0=21."
+  },
+  "program": {
+    "O0": {
+      "dynamic": {
+        "instructions": 3878,
+        "loads": 988,
+        "stores": 502,
+        "registers": [
+          "a0",
+          "a1",
+          "a2",
+          "ra",
+          "s0",
+          "sp"
+        ],
+        "register_count": 6
+      },
+      "static_instructions": 211,
+      "output_addresses": {
+        "bucket": "0x00020088",
+        "mean": "0x00020008",
+        "below_count": "0x0002000C",
+        "pass_count": "0x00020004"
+      }
+    },
+    "O1": {
+      "dynamic": {
+        "instructions": 1030,
+        "loads": 70,
+        "stores": 123,
+        "registers": [
+          "a0",
+          "a1",
+          "a2",
+          "a3",
+          "a4",
+          "a5",
+          "a6",
+          "a7",
+          "s0",
+          "s1",
+          "s2",
+          "sp",
+          "t0",
+          "t1",
+          "t2",
+          "t3",
+          "t4",
+          "t5",
+          "t6"
+        ],
+        "register_count": 19
+      },
+      "static_instructions": 109,
+      "output_addresses": {
+        "bucket": "0x00020084",
+        "mean": "0x00020004",
+        "below_count": "0x00020008",
+        "pass_count": "0x00020000"
+      }
+    }
+  }
+}
