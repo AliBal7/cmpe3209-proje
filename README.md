@@ -4,9 +4,9 @@ Ali Bal | 5001230006 | Computer Organization
 
 ## Teslim sürümleri
 
-- [M2 teslim paketi](https://github.com/AliBal7/cmpe3209-proje/releases/tag/M2): güncel tam tutanak ve dijital ZIP.
+- [M2 teslim paketi](https://github.com/AliBal7/cmpe3209-proje/releases/tag/M2-teslim): güncel tam tutanak ve dijital ZIP.
 - `M1`, `M1-teslim`: önceki aşamanın korunmuş Git etiketleri.
-- `M2`: assembly, optimizasyon karşılaştırması ve 10 instruction kodlamasının teslim sürümü.
+- `M2`: assembly, optimizasyon karşılaştırması ve 10 instruction kodlaması; `M2-teslim`: bağımsız ZIP'ten de çalışması doğrulanmış son teslim sürümü.
 
 Depo herkese açıktır. M2 PDF, özgün tutanağın tüm sayfalarını, M1 verilerini ve M2 eklerini içerir.
 Hocanın M1 geri bildirimi uygulandı: 39 satırlık kod 1.3 bloğuna alındı ve aynı bölümün devam sayfasına taşındı.

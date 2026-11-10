@@ -139,7 +139,8 @@ def main():
         enc.append(dict(number=n,address=f'0x{address:08X}',assembly=actual['mnemonic']+' '+actual['operands'],op=op,arguments=args,format=fmt,
             fields=fields,binary=f'{word:032b}',word=f'0x{word:08X}',bytes=word.to_bytes(4,'little').hex(' '),purpose=purpose,verified=True))
     assert set(x['format'] for x in enc)==set('RISBUJ')
-    asm_map=asm_source_lines(ROOT/'evidence/asm_O0.s');lines=(ROOT/'main.c').read_text().splitlines();mapping=[]
+    asm_paths={opt:(ROOT/f'asm_{opt}.s' if (ROOT/f'asm_{opt}.s').exists() else ROOT/f'evidence/asm_{opt}.s') for opt in ['O0','O1']}
+    asm_map=asm_source_lines(asm_paths['O0']);lines=(ROOT/'main.c').read_text().splitlines();mapping=[]
     for n,line in enumerate(lines,1):
         ii=[i for i in infos['O0']['instructions'] if i['c_line']==n]
         addresses=[f"0x{x['address']:08X}" for x in ii]
@@ -150,7 +151,8 @@ def main():
         if n in [4,5]:note='Global diziler/sonuçlar .bss içindedir; başlangıç sıfırdır.'
         mapping.append(dict(c_line=n,source=line,asm_lines=compact(asm_map.get(n,[])),addresses=addresses,note=note))
     for opt in ['O0','O1']:
-        shutil.copy2(ROOT/f'evidence/asm_{opt}.s',ROOT/f'asm_{opt}.s')
+        destination=ROOT/f'asm_{opt}.s'
+        if asm_paths[opt].resolve()!=destination.resolve():shutil.copy2(asm_paths[opt],destination)
         (OUT/f'disassembly_{opt}.txt').write_text('\n'.join(f"0x{i['address']:08X}  {i['word']:08x}  {i['mnemonic']:<6} {i['operands']:<26} C:{i['c_line']}" for i in infos[opt]['instructions'])+'\n',encoding='utf-8')
     with (OUT/'c_to_assembly.csv').open('w',newline='',encoding='utf-8-sig') as f:
         w=csv.writer(f);w.writerow(['c_line','C_source','asm_O0_s_lines','ELF_instruction_addresses','note'])
