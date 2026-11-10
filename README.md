@@ -1,58 +1,85 @@
-# CMPE3209 - M1
+# CMPE3209 - G2 / RV32IM
 
-Ali Bal | 5001230006 | G2 Sınav notu dağılımı | RV32IM
+Ali Bal | 5001230006 | Computer Organization
 
-## Ne yapıyor?
+## Teslim sürümleri
 
-Program öğrenci numarasından 30 not üretiyor. Notları beş aralıkta sayıyor,
-tamsayı ortalamayı buluyor ve 56 veya üstü alanları geçen olarak sayıyor.
-Son geçişte ortalamanın altındaki notların 8. bitini OR 0x100 ile işaretliyor.
-Notları gruplama ve geçme hesabı, işaretleme yapılmadan önce tamamlanıyor.
+- [M2 teslim paketi](https://github.com/AliBal7/cmpe3209-proje/releases/tag/M2): güncel tam tutanak ve dijital ZIP.
+- `M1`, `M1-teslim`: önceki aşamanın korunmuş Git etiketleri.
+- `M2`: assembly, optimizasyon karşılaştırması ve 10 instruction kodlamasının teslim sürümü.
 
-## Numara ve parametreler
+Depo herkese açıktır. M2 PDF, özgün tutanağın tüm sayfalarını, M1 verilerini ve M2 eklerini içerir.
+Hocanın M1 geri bildirimi uygulandı: 39 satırlık kod 1.3 bloğuna alındı ve aynı bölümün devam sayfasına taşındı.
+Onaylanan `main.c` ve M1 kernel'i değiştirilmedi. İmza ve öğretim üyesi alanları kendiliğinden doldurulmadı.
 
-Tam öğrenci numarası 5001230006, signed 32 bit sınırını aştığından C kodundaki
-SID son 9 hanenin sayısal değeri olan 1230006'dır (001230006).
-Kişisel parametreler tam numaradan hesaplanmıştır: d=6, D2=06, S=17, N=30.
-Cache: 64 B / 16 B line / direct / 4 line; write-back, write-allocate.
-k=6, I/O, Nc=5; f=1.6 GHz; T1=1 cycle, T2=30 cycle.
-Bu donanım değerleri model varsayımlarıdır. Word/line/tag: 4/2/26 bit.
+## Program ve kişisel parametreler
 
-## Doğrulama
+G2: 30 not LCG ile üretilir; beş aralıkta sayılır. Tamsayı ortalama hesaplandıktan sonra,
+ortalamanın altındaki notların 8. biti OR 0x100 ile işaretlenir.
 
-Zig 0.13.0 içindeki Clang 18.1.6 ile C99, -O0, RV32IM/ILP32 derlendi.
-Unicorn 2.1.4 üzerinde ELF yüklendi; main girişinden başlatıldı, SP=0x00110000,
-RA=0x0003FFF0 dönüş sentinel'i kullanıldı. Bellek sıfırdan başlatıldı.
-Bağımsız Python hesabıyla tüm global sonuçlar ve işaretlenmiş 30 eleman karşılaştırıldı.
+Tam numara 5001230006 signed 32 bit sınırını aştığından kodda son 9 hanenin sayısal değeri
+`SID=1230006` kullanılır. Tam numara üzerinden d=6, D2=06, S=17, N=30.
+Cache: 64 B, line 16 B, direct, 4 line; write-back / write-allocate.
+k=6, I/O; f=1.6 GHz, T1=1 cycle, T2=30 cycle, Nc=5 (model varsayımları).
+Adres alanları tag/line/word = 26/2/4 bit.
 
-Sonuç: bucket={14,1,7,0,8}, mean=51, below_count=14, pass_count=15; toplam=1553.
-Gerçek adresler ve yürütülen kernel evidence/verification.json dosyasındadır.
-Kernel, i=0 çağrısındaki jalr ile başlar ve mark_below dönüşünde biter (20 instruction).
-Store'ların kernel içinde stack'e, C satır 35'te ise ana diziye yapıldığına dikkat edilmelidir.
+## M2 doğrulaması
 
-Kurulum: Python paketleri `unicorn==2.1.4 pyelftools==0.33 capstone==5.0.9 ziglang==0.13.0`.
-Derleme: `powershell -File tools/build.ps1` (zig yolunu kurulumuna göre ayarla).
-Doğrulama: `python tools/verify.py`.
+Clang 18.1.6 (Zig 0.13.0), RV32IM / ILP32, C99; -O0 ve -O1 derlemeleri.
+Unicorn 2.1.4 üzerinde iki ELF de gerçek komutları yürütür. Her iki derleme:
 
-## YZ kullanımı ve teslim durumu
+`bucket={14,1,7,0,8}, mean=51, below_count=14, pass_count=15`
 
-Kodun denetlenmesi ve derleme hatalarının giderilmesinde ChatGPT/Codex desteği kullanıldı.
-Programın sonuçları RV32IM belleği ve bağımsız hesapla karşılaştırıldı.
+İşaretlenmiş 30 dizi elemanının tamamı eşittir.
 
-M2 ve final aşamaları bu teslimin kapsamında değildir.
-Gerçek simülatör ekran görüntüsü: evidence/rv32im_simulator_screenshot.jpg.
-GUI, tools/sim_gui.py ile ELF dosyasını Unicorn üzerinde çalıştırıp gerçek bellek değerlerini gösterir.
-JSON bellek kanıtı: evidence/verification.json.
-GitHub deposu: https://github.com/AliBal7/cmpe3209-proje (özel).
-İlk sürüm etiketi M1; son teslim paketi etiketi M1-teslim.
+| Ölçü | -O0 | -O1 |
+|---|---:|---:|
+| Tüm program dinamik instruction | 3878 | 1030 |
+| Tüm program load | 988 | 70 |
+| Tüm program store | 502 | 123 |
+| Statik instruction | 211 | 109 |
+| .text boyutu | 844 B | 436 B |
+| Mantıksal kernel instruction | 20 | 3 |
+| Kernel load / store | 6 / 5 | 0 / 0 |
 
-## Teslim dosyaları
+Kernel karşılaştırması i=0, v=7, mean=51 için girişler hazır -> işaretli sonuç hazır sınırını kullanır.
+O0 tarafı M1'in onaylı 20 instruction'lık penceresidir; jalr öncesindeki AUIPC hazırlığı bu sayının dışındadır
+(o komut da eklenirse 21). O1, main içindeki inline `slt/slli/or` üçlüsüdür. Diziye load/store sınırın dışındadır.
+Farkın nedenleri register allocation, inlining ve branch'in koşulsuz ALU işlemleriyle değiştirilmesidir.
 
-- pdf/Ali_Bal_5001230006_M1_YAZDIR.pdf: basılacak 7 sayfa; M1 formu, iki sayfalık öneri, ekran görüntüsü/kernel ve beyan.
-- pdf/Ali_Bal_CMPE3209_M1_Tutanak.pdf: gönderilen resmî özgün formun M1 alanları doldurulmuş sürümü (15 özgün sayfa + 3 ek sayfa). Sonraki aşamalarda aynı belge güncellenir. M1 için basılacak sayfalar: 1-3,14,16-18.
-- pdf/Ali_Bal_CMPE3209_M1_Oneri.pdf: iki sayfalık program önerisi (Ek-1).
-- pdf/Ali_Bal_CMPE3209_M1_Ek2.pdf: gerçek simülatör ekran görüntüsü ve kernel listesi.
-- main.c: 39 satırlık kaynak kodu; .git: tüm commit geçmişi ve etiketler.
+10 instruction, semantik operandlardan yeniden encode edilip ELF byte'larıyla eşleştirildi.
+R/I/S/B/U/J formatları kapsanır. SID yükleme, branch offset, load, store ve AUIPC/JALR çağrısı gösterilir.
+Doğrulama için yönergenin izin verdiği simülatör alternatifi kullanılmıştır.
+Disassembly dosyaları Capstone çıktısıdır; objdump çıktısı olarak sunulmamıştır.
 
-Postayla gönderilecek ZIP, gizli .git klasörünü de içerir. GitHub'daki Download ZIP bu geçmişi içermez.
-ZIP dosyasını açtıktan sonra `git log --oneline` ve `git tag` ile geçmiş ve etiketler incelenebilir.
+## Dosyalar
+
+- `pdf/Ali_Bal_5001230006_M2_TESLIM_TUTANAGI.pdf`: güncel tam tutanak; 26 sayfanın tamamı basılabilir.
+- `main.c`, `link.ld`, `asm_O0.s`, `asm_O1.s`: kaynak, adres yerleşimi ve derleyici listeleri.
+- `evidence/main_O0.elf`, `evidence/main_O1.elf`: çalıştırılan ELF'ler.
+- `m2/c_to_assembly.csv`: 39 C satırının .s satırları ve gerçek ELF adresleri.
+- `m2/machine_code.csv`, `m2/analysis.json`: kodlama alanları ve sayısal doğrulama.
+- `m2/disassembly_O0.txt`, `m2/disassembly_O1.txt`: gerçek instruction listeleri.
+- `m2/machine_code_verification.jpg`: gerçek doğrulama penceresinin ekran görüntüsü.
+
+## Yeniden çalıştırma
+
+```powershell
+python -m pip install -r requirements-verify.txt
+python tools/m2_analysis.py
+python tools/m2_gui.py
+```
+
+Yeniden derleme için Zig 0.13.0 / Clang 18.1.6 kullanılır:
+
+```powershell
+python -m pip install ziglang==0.13.0
+powershell -File tools/build.ps1 -Optimization all
+```
+
+Derleme hedefi `-target riscv32-freestanding -mcpu=generic_rv32+m -mabi=ilp32`dir;
+üretilen ELF yalnızca 32 bit RV32IM instruction'ları içerir. C uzantısı kapalıdır.
+Tam seçenekler `tools/build.ps1` ve rapordadır.
+
+YZ desteği: kodlama/derleme denetimi, hata düzeltme ve doğrulama için ChatGPT/Codex kullanıldı.
+M3, M4 ve final çalışmaları bu teslimde tamamlanmış olarak gösterilmemiştir.
