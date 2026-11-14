@@ -23,7 +23,8 @@ def main():
  def git(*a):return subprocess.check_output(['git','-C',str(clone),*a],text=True).strip()
  tags={tag:git('rev-parse',tag+'^{}') for tag in ['M1','M2','final']}
  assert git('rev-parse','HEAD')==tags['final']
- assert (clone/'main.c').read_bytes()==(check/'main.c').read_bytes()
+ # Windows clone may apply core.autocrlf; compare source text with normalized newlines.
+ assert (clone/'main.c').read_text()==(check/'main.c').read_text()
  assert (clone/'pdf/Ali_Bal_5001230006_FINAL_TESLIM_TUTANAGI.pdf').read_bytes()==(check/'Ali_Bal_5001230006_FINAL_TESLIM_TUTANAGI.pdf').read_bytes()
  pages=len(PdfReader(check/'Ali_Bal_5001230006_FINAL_TESLIM_TUTANAGI.pdf').pages);assert pages==39
  print(json.dumps({'zip_crc':'PASS','standalone_analysis_exact_match':True,'cache_and_output_invariants':actual['all_cache_outputs_invariant'],
