@@ -3,7 +3,7 @@ import csv, json, math, shutil, sys
 from collections import Counter
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'tools'))
-from final_trace import execute,export_csv,reference
+from final_trace import execute,export_csv,reference,REGS
 from cache_sim import Cache,direct_steps,self_test
 
 OUT=ROOT/'final';OUT.mkdir(exist_ok=True)
@@ -54,12 +54,19 @@ def kernel_rows(run,cache):
         mbr=[ins['word']]+[r['value'] for r in mem]
         alu=ins['mnemonic']+' '+ins['operands']
         if ins['category'] in ['Load','Store']:alu='EA='+hex8(mem[0]['address'])
+        elif ins['mnemonic']=='blt':alu='7 < 51: true; PC='+hex8(ins['next_pc'])
+        elif ins['category']=='Branch/jump':alu='PC='+hex8(ins['next_pc'])
+        elif ins['mnemonic']=='ori':alu='7 OR 256 = 263'
+        elif ins['mnemonic']=='addi':
+            dest=REGS[(ins['word']>>7)&31];alu=ins['operands']+' => '+hex8(ins['after'][dest])
         row=dict(number=n,pc_before=ins['address'],pc_fetch_next=(ins['address']+4)&0xffffffff,
                  pc_after=ins['next_pc'],assembly=ins['mnemonic']+' '+ins['operands'],IR=ins['word'],
                  states=model_states(ins,mem),MAR=[b['address'] for b in bus],MBR=mbr,ALU=alu,
                  changed=ins['changed'],before=ins['before'],after=ins['after'],bus=bus,
                  category='PM' if mem else 'C' if ins['category']=='Branch/jump' else 'DP',
                  data_refs=mem,cache=[dict(number=k,hit=events[k]['hit']) for k in ins['memory']])
+        opcode=ins['word']&127;rd=(ins['word']>>7)&31
+        row['written']={REGS[rd]:ins['after'][REGS[rd]]} if opcode not in [0x23,0x63] and rd else {}
         rows.append(row)
     return rows
 def main():
@@ -90,6 +97,16 @@ def main():
     perf={k:performance(r,caches[k]) for k,r in runs.items()}
     kernel=kernel_rows(runs['O0'],caches['O0'])
     krow=kernel[5];assert krow['assembly'].startswith('sw a0') and krow['pc_after']==0x10014
+    assert all((v|256)==v+256 for v in range(101)),'IAS ADD equivalence needs a clear bit 8'
+    assert all(((b['data']&0xffff)|(((b['data']>>16)&0xffff)<<16))==b['data'] for row in kernel for b in row['bus'])
+    saved=dict(krow['after']);restored=dict(saved)
+    for name in restored:
+        if name!='zero':restored[name]=0xdeadbeef
+    restored.update(saved);assert restored==saved
+    with (OUT/'kernel_trace.csv').open('w',newline='',encoding='utf-8-sig') as fp:
+        names=['number','pc_before','pc_after','assembly','IR','states','MAR','MBR','ALU','written','category','bus','cache']
+        w=csv.writer(fp);w.writerow(names)
+        for row in kernel:w.writerow([json.dumps(row[n],ensure_ascii=False) if isinstance(row[n],(dict,list)) else row[n] for n in names])
     first5=[];seen=set()
     for ref in runs['O0']['refs']:
         a=ref['address']
@@ -119,7 +136,7 @@ def main():
     result=dict(outputs=runs['O0']['outputs'],kernel=kernel,
         kernel_totals=dict(instruction_fetch=20,operand_fetch=sum(len(r['data_refs']) for r in kernel if r['category']=='PM' and r['data_refs'][0]['rw']=='R'),
                            operand_store=sum(len(r['data_refs']) for r in kernel if r['category']=='PM' and r['data_refs'][0]['rw']=='W'),
-                           control=[r['number'] for r in kernel if r['category']=='C'],bus32=31,bus16=62),
+                           control=[r['number'] for r in kernel if r['category']=='C'],nonsequential=[r['number'] for r in kernel if r['pc_after']!=r['pc_fetch_next']],bus32=31,bus16=62),
         interrupt=dict(k=6,kind='I/O',interrupted_pc=krow['pc_before'],instruction=krow['assembly'],resume_pc=krow['pc_after'],
                        mepc=krow['pc_after'],mcause=0x8000000b,mtvec=0x30000,registers_to_preserve=krow['after'],
                        completed_store=krow['data_refs'][0],handler_model='Privileged M-mode scenario, not an injected Unicorn interrupt.'),

@@ -1,0 +1,19 @@
+{
+  "version": "GNU objdump (xPack GNU RISC-V Embedded GCC x86_64) 2.45",
+  "command": "riscv-none-elf-objdump -d evidence/main_O0.elf (and O1)",
+  "source": "https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/tag/v15.2.0-1",
+  "executable_sha256": "307d930a497551a94c7459ac49a947c842c320d28eda485c844a79fce1ce7641",
+  "checked": {
+    "O0": {
+      "static_instructions": 211,
+      "all_words_match": true,
+      "elf_sha256": "d1c5df4a5323e9b2c29081b96a17e8f5d3170bafaee42cd83e485a40a58a3501"
+    },
+    "O1": {
+      "static_instructions": 109,
+      "all_words_match": true,
+      "elf_sha256": "eb0137b581a5b4e1f443a25a8f3a2ddf3324e2f0af3e80b3e827b374b7576151"
+    }
+  },
+  "ten_encoded_instructions_match": true
+}
